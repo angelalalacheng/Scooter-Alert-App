@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Theft from "./components/Theft";
+import GPS from "./components/GPS";
+import "./App.css";
 
 function App() {
+  const [park, setPark] = useState(true);
+
+  const handlePark = () => {
+    setPark(!park);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Scooter Alert System</h1>
       </header>
+      <body className="App-body">
+        <Theft park={park} />
+        <GPS park={park} />
+        <button className="button-17" onClick={handlePark}>
+          {park ? "Park" : "Gogo"}
+        </button>
+      </body>
+      <footer className="App-footer"></footer>
     </div>
   );
 }
